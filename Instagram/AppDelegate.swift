@@ -25,15 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
         
         
-        if PFUser.current() != nil {
-        if let currentUser = PFUser.current() {
-            print("hello")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let MainController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-        window?.rootViewController = MainController
-            }
-        }
-
+//        if PFUser.current() != nil {
+//        if let currentUser = PFUser.current() {
+//            print("hello")
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let MainController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+//        window?.rootViewController = MainController
+//            }
+//        else {
+//            }
+//        }
+//
         // Override point for customization after application launch.
         return true
     }

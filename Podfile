@@ -18,5 +18,6 @@ target 'Instagram' do
     # Pods for testing
   end
   pod 'Parse'
+  pod 'ParseUI'
 
 end

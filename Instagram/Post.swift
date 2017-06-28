@@ -11,6 +11,7 @@ import Parse
 
 class Post: NSObject {
     
+    
     class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?){
     
     let post = PFObject(className: "Post")
@@ -26,7 +27,18 @@ class Post: NSObject {
     post["likesCount"] = 0
     post["commentsCount"] = 0
         
+        
+        post.saveInBackground { (success: Bool, error: Error?) in
+            if let error = error {
+              print(error.localizedDescription)
+            } else {
+            print ("Post successful!")
+            }
+        }
+        
     }
+    
+    
     
     class func getPFFileFromImage(image: UIImage?) -> PFFile? {
         if let image = image {
@@ -36,6 +48,8 @@ class Post: NSObject {
         }
         return nil
     }
+    
+    
 
 }
 

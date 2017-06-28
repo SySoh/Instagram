@@ -7,41 +7,76 @@
 //
 
 import UIKit
+import Parse
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
+    var refreshTimer: Timer!
+    
+    var postList: [PFObject?] = []
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            print("Camera Available")
-            vc.sourceType = UIImagePickerControllerSourceType.camera
-        } else {
-            print("Camera not available, so photo lib instead")
-            vc.sourceType = .photoLibrary
-        }
-        
-        self.present(vc, animated: true, completion: nil)
-        
+        pullData()
+        refreshTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.pullData), userInfo: nil, repeats: true)
+        tableView.delegate = self
+        tableView.dataSource = self
         
 
         // Do any additional setup after loading the view.
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+
+    
+    
+    
+    func pullData(){
+        let query = PFQuery(className: "Post")
+        //edit parameters for query here
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in if let error = error {
+            print(error.localizedDescription)
+        } else {
+            if let posts = posts{
+            self.postList = posts
+            print(self.postList[0]?.object(forKey: "caption")! ?? "No caption")
+            }
+            else {
+                print("Nil post retrieval")
+            }
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+        let post = postList[indexPath.row]
+        cell.instagramPost = post
+        cell.captionLabel.text = post?.object(forKey: "caption") as! String
+        let user = post?.object(forKey:"author") as? PFUser
+//        if user?.username != nil {
+//        cell.userLabel.text = user?.username
+//        } else{
+        cell.userLabel.text = "Anon"
+      //  }
+        cell.likesLabel.text = String(describing: post?.object(forKey: "likesCount") as! Int)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //do stuff here
-        
-        dismiss(animated: true, completion: nil)
+        return postList.count
         
     }
+    
+
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

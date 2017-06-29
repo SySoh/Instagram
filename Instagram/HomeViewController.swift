@@ -16,14 +16,30 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var postList: [PFObject?] = []
     
+    var refreshControl: UIRefreshControl!
+    
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated :true)
+        }
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        tabBarController?.tabBar.barTintColor = UIColor.white
+        pullData()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        pullData()
-        refreshTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.pullData), userInfo: nil, repeats: true)
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         tableView.delegate = self
         tableView.dataSource = self
+        pullData()
         
 
         // Do any additional setup after loading the view.
@@ -35,7 +51,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func pullData(){
         let query = PFQuery(className: "Post")
+        query.addDescendingOrder("createdAt")
         query.includeKey("author")
+        query.limit = 20
+        query.includeKey("createdAt")
         //edit parameters for query here
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in if let error = error {
             print(error.localizedDescription)
@@ -50,6 +69,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
     
@@ -68,7 +88,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 
     
-    
+    func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        pullData()
+    }
     
 
     override func didReceiveMemoryWarning() {
@@ -84,12 +106,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
  // Get the new view controller using segue.destinationViewController.
  // Pass the selected object to the new view controller.
+ if segue.identifier == "Detail" {
+    print("sending")
  let destVC = segue.destination as! DetailViewController
  let source = sender as! UITableViewCell
  if let indexPath = tableView.indexPath(for: source){
-    let thisPost = postList[indexPath.row]
-    destVC.post = thisPost
+    if let thisPost = postList[indexPath.row] {
+        destVC.post = thisPost
+    } else {
+        print("Empty post")
+    }
  }
+    }
  
  
  

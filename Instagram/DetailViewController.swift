@@ -12,7 +12,7 @@ import ParseUI
 
 class DetailViewController: UIViewController {
     
-    var post: PFObject?
+    var post: PFObject!
 
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -23,17 +23,20 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.photoView.file = post?.object(forKey: "picture") as? PFFile
+        self.photoView.loadInBackground()
+        self.captionLabel.text = post.object(forKey: "caption") as? String ?? "No caption"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.photoView.file = post?.object(forKey: "picture") as! PFFile
-        self.photoView.loadInBackground()
-        let user = post?.object(forKey:"author") as? PFUser
-        if user?.username != nil {
-            self.userLabel.text = user?.username
-        } else{
+        if let user = post.object(forKey:"author") as? PFUser{
+        if user.username != nil {
+            self.userLabel.text = user.username
+        }
+        }else{
             self.userLabel.text = "Anon"
-        self.captionLabel.text = post?.object(forKey: "caption") as! String
-        // Do any additional setup after loading the view.
     }
 }
     

@@ -27,6 +27,13 @@ class DetailViewController: UIViewController {
         self.photoView.file = post?.object(forKey: "picture") as? PFFile
         self.photoView.loadInBackground()
         self.captionLabel.text = post.object(forKey: "caption") as? String ?? "No caption"
+        if let date = post.createdAt {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            let dateString = dateFormatter.string(from: date)
+            self.timeStampLabel.text = dateString// Prints: Jun 28, 2017, 2:08 PM
+        }
     }
     
     override func viewDidLoad() {

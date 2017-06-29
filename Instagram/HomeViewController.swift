@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -18,6 +19,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var refreshControl: UIRefreshControl!
     
+    @IBAction func didLogout(_ sender: Any) {
+        PFUser.logOut()
+        let Login = storyboard?.instantiateViewController(withIdentifier: "Login")
+        self.present(Login!, animated: true, completion: nil)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         

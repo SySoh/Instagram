@@ -35,6 +35,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func pullData(){
         let query = PFQuery(className: "Post")
+        query.includeKey("author")
         //edit parameters for query here
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in if let error = error {
             print(error.localizedDescription)
@@ -55,15 +56,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         let post = postList[indexPath.row]
-        cell.instagramPost = post
-        cell.captionLabel.text = post?.object(forKey: "caption") as! String
-        let user = post?.object(forKey:"author") as? PFUser
-//        if user?.username != nil {
-//        cell.userLabel.text = user?.username
-//        } else{
-        cell.userLabel.text = "Anon"
-      //  }
-        cell.likesLabel.text = String(describing: post?.object(forKey: "likesCount") as! Int)
+        cell.setPost(post: post!)
         return cell
     }
     
@@ -84,14 +77,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destinationViewController.
+ // Pass the selected object to the new view controller.
+ let destVC = segue.destination as! DetailViewController
+ let source = sender as! UITableViewCell
+ if let indexPath = tableView.indexPath(for: source){
+    let thisPost = postList[indexPath.row]
+    destVC.post = thisPost
+ }
+ 
+ 
+ 
+ }
 
 }

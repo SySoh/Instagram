@@ -24,7 +24,17 @@ class PostCell: UITableViewCell {
             self.photoView.loadInBackground()
     }
     }
-    
+    func setPost(post: PFObject){
+    self.instagramPost = post
+    self.captionLabel.text = post.object(forKey: "caption") as? String
+    let user = post.object(forKey:"author") as? PFUser
+    if user?.username != nil {
+    self.userLabel.text = user?.username
+    } else{
+    self.userLabel.text = "Anon"
+    }
+    self.likesLabel.text = String(describing: post.object(forKey: "likesCount") as! Int)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

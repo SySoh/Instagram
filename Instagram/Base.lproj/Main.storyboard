@@ -38,24 +38,24 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4R-1J-th0">
-                                                    <rect key="frame" x="41" y="254" width="326" height="41"/>
+                                                    <rect key="frame" x="24" y="283" width="326" height="41"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVG-Te-F0c">
-                                                    <rect key="frame" x="8" y="226" width="109" height="20"/>
+                                                    <rect key="frame" x="8" y="240" width="109" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTE-Ua-0qM">
-                                                    <rect key="frame" x="327" y="226" width="40" height="49"/>
+                                                    <rect key="frame" x="310" y="226" width="40" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="AcademyEngravedLetPlain" family="Academy Engraved LET" pointSize="17"/>
+                                                    <color key="textColor" red="0.11063826334903322" green="0.070562178543497389" blue="0.96621346473693848" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -65,6 +65,7 @@
                                             <outlet property="likesLabel" destination="NTE-Ua-0qM" id="sxJ-4T-QN5"/>
                                             <outlet property="photoView" destination="uXX-zw-3GM" id="c9b-vZ-rXR"/>
                                             <outlet property="userLabel" destination="aVG-Te-F0c" id="IM1-9z-qPV"/>
+                                            <segue destination="nxB-mK-dtk" kind="presentation" id="wmU-FF-OcM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -103,6 +104,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bi-GX-2Vv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2292" y="42"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="3BH-kS-0yR">
+            <objects>
+                <viewController storyboardIdentifier="DetailView" id="nxB-mK-dtk" customClass="DetailViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e0Q-hm-9Af"/>
+                        <viewControllerLayoutGuide type="bottom" id="FbU-dn-C57"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T47-TJ-Gpn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8k-Xi-Fgb" customClass="PFImageView">
+                                <rect key="frame" x="16" y="93" width="343" height="264"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phU-Vg-4eq">
+                                <rect key="frame" x="39" y="413" width="43" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="653-tn-G3X">
+                                <rect key="frame" x="40" y="465" width="60" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TimeStamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42M-aD-H0O">
+                                <rect key="frame" x="40" y="518" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZH-IK-0ZG">
+                                <rect key="frame" x="0.0" y="20" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="nxB-mK-dtk" eventType="touchUpInside" id="7Op-yB-xTw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eZq-Eb-Vj3"/>
+                    <connections>
+                        <outlet property="captionLabel" destination="653-tn-G3X" id="4qt-EI-aun"/>
+                        <outlet property="photoView" destination="N8k-Xi-Fgb" id="I3r-LP-Taa"/>
+                        <outlet property="timeStampLabel" destination="42M-aD-H0O" id="MOI-Nq-8ZR"/>
+                        <outlet property="userLabel" destination="phU-Vg-4eq" id="Gq1-zf-QJG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sU-Il-Aku" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4170.3999999999996" y="850.52473763118451"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="3Ie-X3-nmg">

@@ -38,6 +38,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor.gray
+        tabBarController?.tabBar.barTintColor = UIColor.darkGray
         if let user = post.object(forKey:"author") as? PFUser{
         if user.username != nil {
             self.userLabel.text = user.username

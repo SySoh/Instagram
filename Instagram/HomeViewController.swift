@@ -12,6 +12,7 @@ import ParseUI
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     var refreshTimer: Timer!
     
@@ -30,8 +31,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let index = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: index, animated :true)
         }
-        navigationController?.navigationBar.barTintColor = UIColor.white
-        tabBarController?.tabBar.barTintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor.gray
+        tabBarController?.tabBar.barTintColor = UIColor.darkGray
         pullData()
         tableView.delegate = self
         tableView.dataSource = self

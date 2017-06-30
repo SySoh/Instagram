@@ -36,6 +36,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
+        didPullToRefresh(refreshControl)
     }
 
     override func viewDidLoad() {

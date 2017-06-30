@@ -247,7 +247,18 @@
                             <outletCollection property="gestureRecognizers" destination="1Gr-6t-TU7" appends="YES" id="8yZ-Hi-8mB"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="rqm-nL-PK8"/>
+                    <navigationItem key="navigationItem" id="rqm-nL-PK8">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="VQ8-Gv-8ry">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yKY-Qo-kvo">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="E3k-6j-Stg" eventType="touchUpInside" id="dxH-6N-gv8"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="captionText" destination="zjy-OA-sns" id="XtH-3y-FSr"/>
                         <outlet property="pictureView" destination="EXx-3I-H5g" id="kOL-fb-h7u"/>

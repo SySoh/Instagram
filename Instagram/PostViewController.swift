@@ -11,6 +11,10 @@ import Parse
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true) {
+        }
+    }
     @IBOutlet weak var pictureView: UIImageView!
     @IBOutlet weak var captionText: UITextField!
     @IBAction func accessCamera(_ sender: Any) {

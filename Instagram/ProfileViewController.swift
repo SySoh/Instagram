@@ -12,6 +12,7 @@ import ParseUI
 
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    @IBOutlet weak var userNameHeaderLabel: UILabel!
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var profileImage: PFImageView!
@@ -62,6 +63,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let dateString = dateFormatter.string(from: creationDate)
                 self.creationDateLabel.text = "User since: " + dateString// Prints: Jun 28, 2017, 2:08 PM
         }
+        userNameHeaderLabel.text = PFUser.current()?.username
+        if user?["profilePic"] != nil {
+            profileImage.file = user?["profilePic"] as? PFFile
+            self.profileImage.loadInBackground()
+        }
+        else{
+            print("Something broke.")
+        }
+        
         
         
         // Do any additional setup after loading the view.
@@ -70,6 +80,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     @IBAction func onProfilePicTap(_ sender: Any) {
+        print("hello!")
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
@@ -92,8 +103,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         profileImage.image = editedImage
         
-        dismiss(animated: true, completion: nil)
-        
+        dismiss(animated: true, completion:{
+            if let user = PFUser.current() {
+        user["profilePic"] = Post.getPFFileFromImage(image: editedImage)
+        user.saveInBackground()
+            }
+    
+    
+        })
     }
     
     

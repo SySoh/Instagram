@@ -45,7 +45,7 @@
                                                     <nil key="highlightedColor"/>
                                                     <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="e3e-ZR-R5D">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="e3e-ZR-R5D" customClass="PFImageView">
                                                     <rect key="frame" x="24" y="16" width="40" height="41"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <gestureRecognizers/>
@@ -72,6 +72,7 @@
                                             <outlet property="captionLabel" destination="a4R-1J-th0" id="y7a-7y-j2J"/>
                                             <outlet property="likesLabel" destination="NTE-Ua-0qM" id="sxJ-4T-QN5"/>
                                             <outlet property="photoView" destination="uXX-zw-3GM" id="c9b-vZ-rXR"/>
+                                            <outlet property="profphoto" destination="e3e-ZR-R5D" id="b76-gK-KV0"/>
                                             <outlet property="userLabel" destination="aVG-Te-F0c" id="IM1-9z-qPV"/>
                                             <segue destination="nxB-mK-dtk" kind="show" identifier="Detail" id="Mya-fw-0lc"/>
                                         </connections>
@@ -306,7 +307,7 @@
                                                     <nil key="highlightedColor"/>
                                                     <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="PPX-AX-wY4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="PPX-AX-wY4" customClass="PFImageView">
                                                     <rect key="frame" x="24" y="16" width="40" height="41"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -332,6 +333,7 @@
                                             <outlet property="captionLabel" destination="2iU-UH-VID" id="c6t-4T-oIi"/>
                                             <outlet property="likesLabel" destination="J1q-0q-V8b" id="bRB-XP-A6v"/>
                                             <outlet property="photoView" destination="2Z8-3Y-U7M" id="d0d-wp-5TP"/>
+                                            <outlet property="profphoto" destination="PPX-AX-wY4" id="IUJ-aB-WmX"/>
                                             <outlet property="userLabel" destination="N1R-us-Uwu" id="Lg4-dh-Gng"/>
                                             <segue destination="nxB-mK-dtk" kind="presentation" id="d5E-51-gyE"/>
                                         </connections>
@@ -342,7 +344,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="art-x8-6Wi" customClass="PFImageView">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="art-x8-6Wi" customClass="PFImageView">
                                         <rect key="frame" x="8" y="74" width="61" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
@@ -389,7 +391,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Add post"/>
                                 <connections>
-                                    <action selector="addPost:" destination="pqg-a2-6IE" eventType="touchUpInside" id="jlu-zl-Ip4"/>
                                     <segue destination="E3k-6j-Stg" kind="presentation" id="jZK-Z4-Dg8"/>
                                 </connections>
                             </button>
@@ -400,6 +401,7 @@
                         <outlet property="headerView" destination="Fyy-mr-9jI" id="aq0-yV-lFW"/>
                         <outlet property="profileImage" destination="art-x8-6Wi" id="dtr-on-UV6"/>
                         <outlet property="tableView" destination="d71-nI-ZDh" id="22L-Pj-HoY"/>
+                        <outlet property="userNameHeaderLabel" destination="qoX-IK-jZw" id="FHA-7M-iuj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDk-DE-Iha" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -565,7 +567,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mya-fw-0lc"/>
+        <segue reference="d5E-51-gyE"/>
         <segue reference="jZK-Z4-Dg8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var photoView: PFImageView!
+    @IBOutlet weak var profphoto: PFImageView!
     
     @IBOutlet weak var likesLabel: UILabel!
     
@@ -22,12 +23,16 @@ class PostCell: UITableViewCell {
             didSet{
             self.photoView.file = self.instagramPost.object(forKey: "picture") as? PFFile
             self.photoView.loadInBackground()
+            
     }
     }
     func setPost(post: PFObject){
     self.instagramPost = post
     self.captionLabel.text = post.object(forKey: "caption") as? String
     let user = post.object(forKey:"author") as? PFUser
+    
+    self.profphoto.file = user?["profilePic"] as? PFFile
+    self.profphoto.loadInBackground()
     if user?.username != nil {
     self.userLabel.text = user?.username
     } else{

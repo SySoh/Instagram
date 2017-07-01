@@ -33,6 +33,8 @@ class PostCell: UITableViewCell {
     
     self.profphoto.file = user?["profilePic"] as? PFFile
     self.profphoto.loadInBackground()
+        self.profphoto.layer.cornerRadius = 37
+        self.profphoto.clipsToBounds = true
     if user?.username != nil {
     self.userLabel.text = user?.username
     } else{

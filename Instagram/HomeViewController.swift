@@ -85,6 +85,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         let post = postList[indexPath.row]
         cell.setPost(post: post!)
+        cell.profphoto.layer.cornerRadius = 37
+        cell.profphoto.clipsToBounds = true
         return cell
     }
     

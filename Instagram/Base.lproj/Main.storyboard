@@ -155,7 +155,7 @@
                                     <action selector="goBack:" destination="nxB-mK-dtk" eventType="touchUpInside" id="7Op-yB-xTw"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="VFc-AG-0kf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="VFc-AG-0kf" customClass="PFImageView">
                                 <rect key="frame" x="8" y="88" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -173,6 +173,7 @@
                     <connections>
                         <outlet property="captionLabel" destination="653-tn-G3X" id="4qt-EI-aun"/>
                         <outlet property="photoView" destination="N8k-Xi-Fgb" id="I3r-LP-Taa"/>
+                        <outlet property="profilePhoto" destination="VFc-AG-0kf" id="s7h-OY-eMI"/>
                         <outlet property="timeStampLabel" destination="42M-aD-H0O" id="MOI-Nq-8ZR"/>
                         <outlet property="userLabel" destination="phU-Vg-4eq" id="Gq1-zf-QJG"/>
                     </connections>
@@ -335,7 +336,7 @@
                                             <outlet property="photoView" destination="2Z8-3Y-U7M" id="d0d-wp-5TP"/>
                                             <outlet property="profphoto" destination="PPX-AX-wY4" id="IUJ-aB-WmX"/>
                                             <outlet property="userLabel" destination="N1R-us-Uwu" id="Lg4-dh-Gng"/>
-                                            <segue destination="nxB-mK-dtk" kind="presentation" id="d5E-51-gyE"/>
+                                            <segue destination="nxB-mK-dtk" kind="presentation" id="Wpr-gf-nVr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -567,7 +568,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d5E-51-gyE"/>
+        <segue reference="Wpr-gf-nVr"/>
         <segue reference="jZK-Z4-Dg8"/>
     </inferredMetricsTieBreakers>
 </document>

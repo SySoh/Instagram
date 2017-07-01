@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var profilePhoto: PFImageView!
     @IBOutlet weak var photoView: PFImageView!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
@@ -41,6 +42,11 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.gray
         tabBarController?.tabBar.barTintColor = UIColor.darkGray
         if let user = post.object(forKey:"author") as? PFUser{
+            self.profilePhoto.file = user["profilePic"] as? PFFile
+            self.profilePhoto.loadInBackground()
+            self.profilePhoto.layer.cornerRadius = 37
+            self.profilePhoto.clipsToBounds = true
+
         if user.username != nil {
             self.userLabel.text = user.username
         }

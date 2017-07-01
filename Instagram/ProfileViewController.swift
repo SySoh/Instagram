@@ -49,6 +49,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImage.layer.cornerRadius = 37
+        profileImage.clipsToBounds = true
         headerView.layer.borderColor = UIColor.black.cgColor
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
@@ -143,6 +145,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         let post = postList[indexPath.row]
         cell.setPost(post: post!)
+        cell.profphoto.layer.cornerRadius = 37
+        cell.profphoto.clipsToBounds = true
         return cell
     }
     
